@@ -1,6 +1,7 @@
 name: Weekly check
 
 on:
+  workflow_dispatch:
   schedule:
     # Every Monday at 9AM
     - cron: '0 9 * * 1'
