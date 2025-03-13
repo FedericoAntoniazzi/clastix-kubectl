@@ -16,6 +16,7 @@ jobs:
         with:
           fetch-tags: true
           fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Get latest tag from the repository
         id: repository
@@ -36,9 +37,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
-          # git config user.name "Github Actions"
-          # git config user.email 'github-actions@users.noreply.github.com'
-          git config user.name "Federico"
-          git config user.email 'FedericoAntoniazzi@users.noreply.github.com'
+          git config user.name "Github Actions [bot]"
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
           git tag -a "${{ steps.remote.outputs.version }}" -m "New release"
           git push origin "${{ steps.remote.outputs.version }}"
